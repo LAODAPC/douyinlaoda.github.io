@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牢大说电脑 - 科技博主与资源下载</title>
+    <!-- 使用您的头像作为标签页图标 -->
+    <link rel="icon" type="image/x-icon" href="./images/1.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #b21f1f;
+            --accent: #fdbb2d;
+            --light: #f5f7fa;
+            --gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* 主要内容区域 */
+        main {
+            padding: 60px 0;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+        }
+        
+        /* 关于我部分 */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* 抖音链接样式 */
+        .douyin-link {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, #FE2C55, #25F4EE);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3);
+        }
+        
+        .douyin-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(254, 44, 85, 0.4);
+        }
+        
+        .douyin-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* 下载资源部分 */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-icon {
+            height: 120px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .download-content {
+            padding: 20px;
+        }
+        
+        .download-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .download-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .download-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* 蓝奏云链接样式 */
+        .lanzou-link {
+            display: inline-flex;
+            align-items: center;
+            background: #1E90FF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .lanzou-link:hover {
+            background: #0066CC;
+        }
+        
+        .lanzou-link i {
+            margin-right: 8px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="container">
+            <div class="profile">
+                <img src="./images/1.jpg" alt="牢大说电脑" class="avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22 viewBox=%220 0 150 150%22><rect width=%22150%22 height=%22150%22 fill=%22%233498db%22/><text x=%2275%22 y=%2280%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22white%22 text-anchor=%22middle%22>牢大说电脑</text></svg>'">
+                <h1 class="name">牢大说电脑</h1>
+                <p class="tagline">科技爱好者 | 硬件评测 | 软件教程 | 资源分享</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                牢大说电脑
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#downloads">资源下载</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 关于我部分 -->
+        <section id="about" class="section">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div>
+                    <img src="./images/1.jpg" alt="牢大说电脑" style="width: 100%; border-radius: 10px;" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22 viewBox=%220 0 300 200%22><rect width=%22300%22 height=%22200%22 fill=%22%233498db%22/><text x=%22150%22 y=%22100%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22white%22 text-anchor=%22middle%22>牢大说电脑</text></svg>'">
+                </div>
+                <div class="about-text">
+                    <p>大家好，我是牢大说电脑，一名热爱科技的博主。我专注于电脑硬件、软件应用、数码产品评测和科技生活分享。</p>
+                    <p>在这个快速发展的数字时代，我希望通过我的分享，帮助大家更好地理解和使用科技产品，让科技真正服务于我们的生活。</p>
+                    <p>我会定期分享实用的软件工具和系统优化资源，欢迎大家关注我的抖音账号，获取最新内容！</p>
+                    <a href="https://www.douyin.com/user/self?from_tab_name=main&showTab=post" class="douyin-link" target="_blank">
+                        <i class="fab fa-tiktok"></i> 关注我的抖音
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 资源下载部分 -->
+        <section id="downloads" class="section">
+            <h2 class="section-title">资源下载</h2>
+            <p style="margin-bottom: 20px;">以下是我整理的实用软件和工具，点击下载按钮获取资源：</p>
+            
+            <div class="download-grid">
+                <!-- 下载项1 -->
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3 class="download-title">Minecraft PCL2 启动器</h3>
+                        <div class="download-meta">
+                            <span>大小: 5.5MB</span>
+                            <span>更新: 2025-11-7</span>
+                        </div>
+                        <p class="download-description">可用于启动各版本Java版Minecraft我的世界</p>
+                        <a href="https://laodapc.lanzouu.com/b016kd6ywj" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> 蓝奏云下载 密码：PCL2
+                        </a>
+                    </div>
+                </div>
+                
+        </section>
+        
+        <!-- 联系我部分 -->
+        <section id="contact" class="section">
+            <h2 class="section-title">联系我</h2>
+            <div style="text-align: center; padding: 20px;">
+                <p>如果您有任何问题或合作意向，欢迎通过以下方式联系我：</p>
+                <a href="https://www.douyin.com/user/self?from_tab_name=main&showTab=post" class="douyin-link" style="margin-top: 20px;">
+                    <i class="fab fa-tiktok"></i> 抖音私信
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.douyin.com/user/self?from_tab_name=main&showTab=post" class="social-link" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 牢大说电脑. 保留所有权利. | 资源仅供学习交流使用</p>
+        </div>
+    </footer>
+</body>
+</html>
